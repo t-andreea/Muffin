@@ -82,10 +82,6 @@ app.post("/products/delete", (request, response) => {
 });
 
 app.get("/order", (request, response, next) => {
-  response.render("order.html")
-});
-
-app.get("/order", (request, response, next) => {
   databaseHandler.getCakes((err, ret_value) => {
     if (err < 0) {
       response.send(ret_value)
@@ -94,7 +90,23 @@ app.get("/order", (request, response, next) => {
     response.render("order.html", { db_info: ret_value })
   })
 });
+/*
+app.post("/order", (request, response) => {
+  var info = request.body
+  
+databaseHandler.insertCustomer(info.customer_name, info.customer_tel, info.customer_email, info.customer_address)
 
+var customer_id = databaseHandler.getID("customers")
+var cake_id = databaseHandler.getCakeID(info.cake_name)
+databaseHandler.insertOrder(customer_id, cake_id)
+
+if (err) {
+        response.send("Eroare!");
+    } else {
+      response.send("Comanda dvs. a fost inregistrata!");
+    }
+});
+*/
 app.get("/contact", (request, response, next) => {
   response.render("contact.html")
 });

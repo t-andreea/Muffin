@@ -19,7 +19,6 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
 }
 
-
 header {
   border: 1px solid transparent;
 }
@@ -79,6 +78,7 @@ nav a {
   opacity: 0.9;
   border-radius: 15px;
   padding: 10px 20px;
+  text-align: center;
 }
 
 .details {
@@ -87,14 +87,21 @@ nav a {
 
 .list table {
   border-collapse: separate;
-  border-spacing: 0 10px;
+  border-spacing: 0 30px;
   margin: auto;
+  text-align: center;
 }
 
 .list th {
   text-decoration: none;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
+  margin: 20px 0;
+}
+
+.list a {
+  color: #FFF;
+  text-decoration: none;
 }
 
 button {
@@ -115,6 +122,14 @@ p {
   font-weight: bold;
 }
 
+.list p {
+  margin-bottom: 0;
+}
+
+.list button {
+  margin-bottom: 30px;
+}
+
 form {
   padding: 10px 20px;
   margin: auto;
@@ -130,6 +145,10 @@ form {
 
 form table {
   margin: 10px auto;
+}
+
+form button {
+  margin-bottom: 10px;
 }
 
 input {

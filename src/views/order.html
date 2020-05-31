@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/about.css">
+    <link rel="stylesheet" type="text/css" href="css/order.css">
     <title>Cofetaria Muffin</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 
@@ -44,8 +44,14 @@
          </tr>
          <tr>
            <th>Produs</th>
-           
-           <th></th>
+           <th>
+             <input list="cakes">
+             <datalist id="cakes">
+              <% db_info.forEach(function(entry) { %>
+                <option value="<%= entry.name %>" name="cake_name">
+              <% }); %>
+             </datalist>
+           </th>
          </tr>
         </table>
         <button type="submit" value="Submit">TRIMITE</button>

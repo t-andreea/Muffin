@@ -30,11 +30,19 @@
       <table>
         <% db_info.forEach(function(entry) { %>
          <tr>
-            <th class="details"><img src="/remove.jpg" height="20px" width="20px" onclick="remove(<%= entry.id %>)" /><img src="<%= entry.picture %>" height="50px" width="50px" /><%= entry.name %><br/>Pret: <%= entry.price %> lei</th>
-            <th><button value="<%= entry.name %>">COMANDA</button></th>
-          </tr>
+          <th>
+           <img src="<%= entry.picture %>" height="200px" width="200px"/>
+           <br>
+           <img src="/remove.jpg" height="20px" width="20px" onclick="remove(<%= entry.id %>)"/>
+           <br>
+           <%= entry.name %>
+           <br>
+           Pret: <%= entry.price %> lei %>
+          </th>
+        </tr>
          <% }); %>
       </table>
+      <button><a href="/order">FA O COMANDA</a></button>
       </div>
       <br />
       <br />

@@ -37,12 +37,12 @@ DatabaseHandler = class DatabaseHandler {
 
   insertCakes() {
     this.db.serialize(() => {
+      this.insertCake("Ciocolata belgiana", 45, "belgian.jpg");
+      this.insertCake("Tort de ciocolata vegan", 130, "vegan.jpg");
+      this.insertCake("Macarons", 18, "maca.jpg");
+      this.insertCake("French Kiss", 85, "french.jpg");
+      this.insertCake("Tort cifre", 115, "cifra.jpg");
       this.insertCake("Cheesecake cu mure", 70, "cheesecake.jpg");
-      this.insertCake("Tort Padurea neagra", 80, "tort2.jpg");
-      this.insertCake("Ciocolata cu matcha", 25, "tort3.jpg");
-      this.insertCake("Ciocolata cu matcha", 25, "tort3.jpg");
-      this.insertCake("Ciocolata cu matcha", 25, "tort3.jpg");
-      this.insertCake("Ciocolata cu matcha", 25, "tort3.jpg");
     })
   }
 
@@ -102,6 +102,16 @@ DatabaseHandler = class DatabaseHandler {
     })
   }
 
+  getCakesForOrder(callback) {
+    this.getResult("SELECT name FROM cakes", (err, row) => {
+      if (err < 0) {
+        callback(-1, "DB error!")
+        return;
+      }
+      callback(0, row)
+    })
+  }
+
   getResult(command, callback) {
     this.db.serialize(() => {
       this.db.all(command, (err, allRows) => {
@@ -124,5 +134,25 @@ DatabaseHandler = class DatabaseHandler {
     });
   }
 }
+/*
+  getID(table) {
+    let sql = "SELECT MAX(id) AS ID FROM " + table;
+    this.db.get(sql, (err,row) => {
+      if(err) {
+        return 0;
+      }
+      else return row.ID;
+    })
+  }
 
+  getCakeID(cake_name) {
+    let sql = "SELECT id FROM cakes WHERE name=" + cake_name;
+    this.db.get(sql, (err,row) => {
+      if(err) {
+        return 0;
+      }
+      else return row.ID;
+    })
+  }
+*/
 module.exports.DatabaseHandler = DatabaseHandler
