@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/products.css">
+    <script language="javascript" src="js/main.js" ></script>
+    <title>Cofetaria Muffin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img src="/logo.png" class="logo">
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/about">DESPRE NOI</a></li>
+            <li><a href="/products">PRODUSE</a></li>
+            <li><a href="/contact">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="list">
+        <p>PRODUSE</p>
+      <table>
+        <% db_info.forEach(function(entry) { %>
+         <tr>
+            <th class="details"><img src="/remove.jpg" height="20px" width="20px" onclick="remove(<%= entry.id %>)" /><img src="<%= entry.picture %>" height="50px" width="50px" /><%= entry.name %><br/>Pret: <%= entry.price %> lei</th>
+            <th><button value="<%= entry.name %>">COMANDA</button></th>
+          </tr>
+         <% }); %>
+      </table>
+      </div>
+      <br />
+      <br />
+      <br />
+      <form enctype="multipart/form-data" action="/products" method="POST">
+        <p>ADAUGA PRAJITURA</p>
+        <table>
+         <tr>
+           <th>Denumire</th>
+           <th><input type = "text" name = "product_name" /></th>
+         <tr>
+           <th>Pret</th>
+           <th><input type = "number" name = "product_price" /></th>
+         </tr>
+         <tr>
+           <th>Imagine</th>
+           <th><input type="file" name="fileToUpload" /><br></th>
+         </tr>
+        </table>
+         <button type="submit" value="Submit">ADAUGA</button>
+      </form>
+    </div>
+  </body>
+</html>
